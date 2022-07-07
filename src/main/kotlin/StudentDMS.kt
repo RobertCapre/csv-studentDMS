@@ -1,3 +1,4 @@
+import kotlin.system.exitProcess
 
 class StudentDMS: SDMSInterface {
     var studentList = mutableListOf(
@@ -88,45 +89,43 @@ class StudentDMS: SDMSInterface {
     }
 
     override fun displayStudent() {
+        println("_______Display all list_____________")
+        for (k in studentList){
+            println("Name: ${k.name}, Age: ${k.age}, Gender: ${k.gender}")
+        }
+        println("___________________________________")
 
+        print("Search by Name, Age, or Gender: ")
 
-
-        print("Enter Name, Age, or Gender: ")
         val idNew = readLine()
+
+        println("_____________Search________________")
 
         while (ctr != size) {
 
             if (studentList[ctr].name == idNew) {
             println("Name: ${studentList[ctr].name}, Age: ${studentList[ctr].age}, Gender: ${studentList[ctr].gender}")
-//                println(studentList)
             }
             else if (studentList[ctr].gender == idNew) {
                 println("Name: ${studentList[ctr].name}, Age: ${studentList[ctr].age}, Gender: ${studentList[ctr].gender}")
-//                println(studentList)
             }
             else if (studentList[ctr].age.toString() == idNew) {
                 println("Name: ${studentList[ctr].name}, Age: ${studentList[ctr].age}, Gender: ${studentList[ctr].gender}")
-//                println(studentList)
             }
 
 
-
-//            println(store)
-
             ctr++
         }
+        println("___________________________________")
+        while (true){
+            print("Do you want to continue(y/n): ")
+            when (readLine()) {
+                "y" -> main()
+                "n" -> exitProcess(-1)
+                else -> println("Invalid Input")
+            }
+        }
 
-
-//        while (ctr != size) {
-//            if (studentList[ctr].id == idNew) {
-//                println("__________________________________________")
-//                println("Student DMS")
-//                println("Name: ${studentList[ctr].name}, Age: ${studentList[ctr].age}, Gender: ${studentList[ctr].gender}")
-//
-//                println("__________________________________________")
-//            }
-//            ctr++
-//        }
 
 
     }

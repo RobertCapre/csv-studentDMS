@@ -15,17 +15,7 @@ fun run() {
             "a", "A" -> sdms.addStudent()
             "b", "B" -> sdms.editStudent()
             "c", "C" -> sdms.deleteStudent()
-            "d", "D" -> {
-                sdms.displayStudent()
-                print("Do you want to continue(y/n): ")
-                val ans = readLine()
-                if (ans == "y") {
-                    continue
-                } else if (ans == "n") {
-                    break
-
-                }
-            }
+            "d", "D" -> sdms.displayStudent()
             "e", "E" -> break
             else -> println("Invalid Input")
         }
