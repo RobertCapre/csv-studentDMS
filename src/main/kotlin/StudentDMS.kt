@@ -7,32 +7,39 @@ class StudentDMS: SDMSInterface {
         Student(id = 3, name = "josh", age = 24, gender = "m")
     )
     private val size = studentList.size
-    var ctr = 0
-
-
+    private var ctr = 0
 
     override fun addStudent(){
-        print("Enter Name: ")
-        val nameNew = readLine()
-        print("Enter Age: ")
-        val ageNew = Integer.valueOf(readLine())
-        print("Enter Gender: ")
-        val genderNew = readLine()
-
-        val store = studentList.last()
-        val idNew = store.id + 1
-
-        val addNew = Student(id = idNew, name = "$nameNew", age = ageNew, gender = "$genderNew")
-        studentList.add(index = size, addNew)
-        println(studentList)
-        println("Student $nameNew has been add to the list")
+        while (true) {
+            print("Enter Name: ")
+            val nameNew = readLine()
+            print("Enter Age: ")
+            val ageNew = readLine()
+            print("Enter Gender: ")
+            val genderNew = readLine()
+            val store = studentList.last()
+            val idNew = store.id + 1
+            val ints = ageNew?.toIntOrNull()
+            if (ageNew?.toIntOrNull() != null) {
+                val newAge = ageNew.toInt()
+                val addNew = Student(id = idNew, name = "$nameNew", age = newAge, gender = "$genderNew")
+                studentList.add(index = size, addNew)
+                println("Student $nameNew has been add to the list")
+            }else {
+                println("Invalid Input")
+            }
+            print("Do you want to continue(y/n): ")
+            when (readLine()) {
+                "y", "Y" -> main()
+                "n", "N" -> exitProcess(-1)
+                else -> println("Invalid Input")
+            }
+        }
     }
 
     override fun editStudent() {
-
         print("Enter ID: ")
         val idNew = Integer.valueOf(readLine())
-
         for (index in studentList) {
             if (index.id == idNew) {
                 println("This is the Student Info")
